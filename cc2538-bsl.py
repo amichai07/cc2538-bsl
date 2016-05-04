@@ -324,6 +324,7 @@ class CommandInterface(object):
 
 
     def sendReset(self):
+        mdebug(10, "*** sending reset sequence")
         self._write(0x55)
         self._write(0x01)
         self._write(0x09)
