@@ -322,6 +322,17 @@ class CommandInterface(object):
     def _read(self, length):
         return bytearray(self.sp.read(length))
 
+
+    def sendReset(self):
+        self._write(0x55)
+        self._write(0x01)
+        self._write(0x09)
+        self._write(0x09)
+        # self._wait_for_ack()
+
+
+
+
     def sendAck(self):
         self._write(0x00)
         self._write(0xCC)
@@ -917,9 +928,10 @@ Examples:
 
 if __name__ == "__main__":
 
+
     conf = {
             'port': 'auto',
-            'baud': 500000,
+            'baud': 115200,
             'force_speed' : 0,
             'address': None,
             'force': 0,
@@ -1036,7 +1048,7 @@ if __name__ == "__main__":
             firmware = FirmwareFile(args[0])
 
         mdebug(5, "Connecting to target...")
-
+        cmd.sendReset()
         if not cmd.sendSynch():
             raise CmdException("Can't connect to target. Ensure boot loader is started. (no answer on synch sequence)")
 

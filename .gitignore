@@ -10,6 +10,7 @@ __pycache__/
 test-output/
 htmlcov/
 .tox/
+.idea
 .coverage
 .coverage.*
 .cache
