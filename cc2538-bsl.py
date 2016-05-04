@@ -1068,15 +1068,15 @@ if __name__ == "__main__":
 		# if (cmd.cmdPing() != 1):
 		#     raise CmdException("Can't connect to target. Ensure boot loader is started. (no answer on ping command)")
 
-		chip_id = cmd.cmdGetChipId()
-		chip_id_str = CHIP_ID_STRS.get(chip_id, None)
-
-		if chip_id_str is None:
-			mdebug(10, '    Unrecognized chip ID. Trying CC13xx/CC26xx')
-			device = CC26xx(cmd)
-		else:
-			mdebug(10, "    Target id 0x%x, %s" % (chip_id, chip_id_str))
-			device = CC2538(cmd)
+		# chip_id = cmd.cmdGetChipId()
+		# chip_id_str = CHIP_ID_STRS.get(chip_id, None)
+		#
+		# if chip_id_str is None:
+		# 	mdebug(10, '    Unrecognized chip ID. Trying CC13xx/CC26xx')
+		# 	device = CC26xx(cmd)
+		# else:
+		# 	mdebug(10, "    Target id 0x%x, %s" % (chip_id, chip_id_str))
+		device = CC2538(cmd)
 
 		# Choose a good default address unless the user specified -a
 		if conf['address'] is None:
