@@ -432,7 +432,7 @@ class CommandInterface(object):
 		self._write(cmd)  # send data
 
 		mdebug(10, "*** GetChipId command (0x28)")
-		if self._wait_for_ack("Get ChipID (0x28)"):
+		if self._wait_for_ack("Get ChipID (0x28)",2):
 			version = self.receivePacket()  # 4 byte answ, the 2 LSB hold chip ID
 			if self.checkLastCmd():
 				assert len(version) == 4, "Unreasonable chip id: %s" % repr(version)
